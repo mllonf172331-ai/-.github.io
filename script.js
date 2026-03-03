@@ -26,7 +26,7 @@ const colors = [
     "#fed7aa"
 ];
 
-const emojis = ["🌸", "🎓", "💐", "🎀", "🍡", "🕊️", "✨", "⭐", "🫶", "❤️", "🐾", "📌"];
+const emojis = ["🌸", "🎓", "💐", "🎀", "🍡", "🕊️", "✨", "⭐", "🫶", "❤️", "🐾", "📌", "🏓"];
 
 const LS_NOTES_KEY = "grad_notes_cache_v1";
 const LS_FORM_KEY = "grad_notes_form_v1";
