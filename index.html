@@ -1,169 +1,192 @@
 <!DOCTYPE html>
 <html lang="th">
+
 <head>
-  <meta charset="UTF-8">
-  <title>กระดาษปัจฉิม 🕊️</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <title>กระดาษปัจฉิม 🕊️</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <!-- Firebase Compat -->
-  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
+    <!-- Firebase Compat -->
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
 
-  <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
-  <div id="scene" aria-hidden="true">
-    <svg viewBox="0 0 1200 700" preserveAspectRatio="xMidYMid slice" role="img" aria-label="">
-      <defs>
-        <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0%" stop-color="#ffd1dc"/>
-          <stop offset="45%" stop-color="#ffb4c8"/>
-          <stop offset="75%" stop-color="#a7c7ff"/>
-          <stop offset="100%" stop-color="#6b8dd6"/>
-        </linearGradient>
-        <radialGradient id="sun" cx="50%" cy="50%" r="55%">
-          <stop offset="0%" stop-color="#fff7d6" stop-opacity="1"/>
-          <stop offset="45%" stop-color="#ffd29a" stop-opacity="0.95"/>
-          <stop offset="70%" stop-color="#ff8fb1" stop-opacity="0.55"/>
-          <stop offset="100%" stop-color="#ff8fb1" stop-opacity="0"/>
-        </radialGradient>
-        <linearGradient id="far" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0%" stop-color="#7ea0d8" stop-opacity="0.55"/>
-          <stop offset="100%" stop-color="#4c6fb8" stop-opacity="0.65"/>
-        </linearGradient>
-        <linearGradient id="fuji" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0%" stop-color="#5d78a8" stop-opacity="0.95"/>
-          <stop offset="100%" stop-color="#2f3f63" stop-opacity="0.98"/>
-        </linearGradient>
-        <linearGradient id="ground" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0%" stop-color="#7bc4a3" stop-opacity="0.35"/>
-          <stop offset="100%" stop-color="#2a3a4e" stop-opacity="0.55"/>
-        </linearGradient>
-        <filter id="soft" x="-20%" y="-20%" width="140%" height="140%">
-          <feGaussianBlur stdDeviation="8"/>
-        </filter>
-      </defs>
+    <div id="scene" aria-hidden="true">
+        <svg viewBox="0 0 1200 700" preserveAspectRatio="xMidYMid slice" role="img" aria-label="">
+            <defs>
+                <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="0%" stop-color="#ffd1dc" />
+                    <stop offset="45%" stop-color="#ffb4c8" />
+                    <stop offset="75%" stop-color="#a7c7ff" />
+                    <stop offset="100%" stop-color="#6b8dd6" />
+                </linearGradient>
+                <radialGradient id="sun" cx="50%" cy="50%" r="55%">
+                    <stop offset="0%" stop-color="#fff7d6" stop-opacity="1" />
+                    <stop offset="45%" stop-color="#ffd29a" stop-opacity="0.95" />
+                    <stop offset="70%" stop-color="#ff8fb1" stop-opacity="0.55" />
+                    <stop offset="100%" stop-color="#ff8fb1" stop-opacity="0" />
+                </radialGradient>
+                <linearGradient id="far" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="0%" stop-color="#7ea0d8" stop-opacity="0.55" />
+                    <stop offset="100%" stop-color="#4c6fb8" stop-opacity="0.65" />
+                </linearGradient>
+                <linearGradient id="fuji" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="0%" stop-color="#5d78a8" stop-opacity="0.95" />
+                    <stop offset="100%" stop-color="#2f3f63" stop-opacity="0.98" />
+                </linearGradient>
+                <linearGradient id="ground" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="0%" stop-color="#7bc4a3" stop-opacity="0.35" />
+                    <stop offset="100%" stop-color="#2a3a4e" stop-opacity="0.55" />
+                </linearGradient>
+                <filter id="soft" x="-20%" y="-20%" width="140%" height="140%">
+                    <feGaussianBlur stdDeviation="8" />
+                </filter>
+            </defs>
 
-      <!-- Sky -->
-      <rect x="0" y="0" width="1200" height="700" fill="url(#sky)"/>
+            <!-- Sky -->
+            <rect x="0" y="0" width="1200" height="700" fill="url(#sky)" />
 
-      <!-- Sun glow -->
-      <circle cx="860" cy="280" r="150" fill="url(#sun)"/>
+            <!-- Sun glow -->
+            <circle cx="860" cy="280" r="150" fill="url(#sun)" />
 
-      <!-- Soft clouds -->
-      <g opacity="0.35" filter="url(#soft)">
-        <ellipse cx="260" cy="180" rx="180" ry="46" fill="#fff"/>
-        <ellipse cx="360" cy="200" rx="210" ry="52" fill="#fff"/>
-        <ellipse cx="980" cy="170" rx="240" ry="54" fill="#fff"/>
-        <ellipse cx="880" cy="200" rx="210" ry="48" fill="#fff"/>
-      </g>
+            <!-- Soft clouds -->
+            <g opacity="0.35" filter="url(#soft)">
+                <ellipse cx="260" cy="180" rx="180" ry="46" fill="#fff" />
+                <ellipse cx="360" cy="200" rx="210" ry="52" fill="#fff" />
+                <ellipse cx="980" cy="170" rx="240" ry="54" fill="#fff" />
+                <ellipse cx="880" cy="200" rx="210" ry="48" fill="#fff" />
+            </g>
 
-      <!-- Far mountains -->
-      <path d="M0,430 C140,360 250,380 360,410 C470,440 560,350 690,380 C820,410 900,360 1020,390 C1120,415 1160,405 1200,390 L1200,700 L0,700 Z" fill="url(#far)"/>
+            <!-- Far mountains -->
+            <path
+                d="M0,430 C140,360 250,380 360,410 C470,440 560,350 690,380 C820,410 900,360 1020,390 C1120,415 1160,405 1200,390 L1200,700 L0,700 Z"
+                fill="url(#far)" />
 
-      <!-- Mt Fuji -->
-      <path d="M520,515 L700,260 L880,515 Z" fill="url(#fuji)" opacity="0.95"/>
-      <path d="M700,260 L652,330 C682,346 718,346 748,330 Z" fill="#f8fafc" opacity="0.92"/>
-      <path d="M652,330 L610,410 C655,430 745,430 790,410 L748,330 C718,346 682,346 652,330 Z" fill="#eef2ff" opacity="0.55"/>
+            <!-- Mt Fuji -->
+            <path d="M520,515 L700,260 L880,515 Z" fill="url(#fuji)" opacity="0.95" />
+            <path d="M700,260 L652,330 C682,346 718,346 748,330 Z" fill="#f8fafc" opacity="0.92" />
+            <path d="M652,330 L610,410 C655,430 745,430 790,410 L748,330 C718,346 682,346 652,330 Z" fill="#eef2ff"
+                opacity="0.55" />
 
-      <!-- Foreground ground -->
-      <path d="M0,520 C190,470 320,520 460,550 C600,580 710,535 850,520 C1010,500 1120,540 1200,560 L1200,700 L0,700 Z" fill="url(#ground)"/>
+            <!-- Foreground ground -->
+            <path
+                d="M0,520 C190,470 320,520 460,550 C600,580 710,535 850,520 C1010,500 1120,540 1200,560 L1200,700 L0,700 Z"
+                fill="url(#ground)" />
 
-      <!-- Sakura tree (left) -->
-      <g transform="translate(0,0)">
-        <!-- trunk -->
-        <path d="M210,700 C200,640 205,590 210,560 C218,510 250,480 260,440 C275,380 250,340 230,305 C220,288 210,268 220,248 C235,215 270,216 290,240 C312,266 308,300 318,340 C330,390 360,408 385,430 C415,455 430,490 420,530 C410,575 375,610 355,640 C330,675 325,700 330,700 Z"
-              fill="#4b2b33" opacity="0.70"/>
-        <!-- branches -->
-        <path d="M305,335 C270,300 245,270 240,245" stroke="#4b2b33" stroke-width="14" stroke-linecap="round" opacity="0.45" fill="none"/>
-        <path d="M330,390 C365,362 398,340 430,330" stroke="#4b2b33" stroke-width="12" stroke-linecap="round" opacity="0.42" fill="none"/>
-        <path d="M275,450 C238,430 208,408 190,386" stroke="#4b2b33" stroke-width="11" stroke-linecap="round" opacity="0.40" fill="none"/>
+            <!-- Sakura tree (left) -->
+            <g transform="translate(0,0)">
+                <!-- trunk -->
+                <path
+                    d="M210,700 C200,640 205,590 210,560 C218,510 250,480 260,440 C275,380 250,340 230,305 C220,288 210,268 220,248 C235,215 270,216 290,240 C312,266 308,300 318,340 C330,390 360,408 385,430 C415,455 430,490 420,530 C410,575 375,610 355,640 C330,675 325,700 330,700 Z"
+                    fill="#4b2b33" opacity="0.70" />
+                <!-- branches -->
+                <path d="M305,335 C270,300 245,270 240,245" stroke="#4b2b33" stroke-width="14" stroke-linecap="round"
+                    opacity="0.45" fill="none" />
+                <path d="M330,390 C365,362 398,340 430,330" stroke="#4b2b33" stroke-width="12" stroke-linecap="round"
+                    opacity="0.42" fill="none" />
+                <path d="M275,450 C238,430 208,408 190,386" stroke="#4b2b33" stroke-width="11" stroke-linecap="round"
+                    opacity="0.40" fill="none" />
 
-        <!-- blossom canopy -->
-        <g opacity="0.92">
-          <circle cx="260" cy="250" r="70" fill="#ffd1dc"/>
-          <circle cx="320" cy="230" r="78" fill="#ffc1d2"/>
-          <circle cx="395" cy="255" r="70" fill="#ffd1dc"/>
-          <circle cx="420" cy="310" r="68" fill="#ffb4c8"/>
-          <circle cx="350" cy="315" r="92" fill="#ffd1dc"/>
-          <circle cx="265" cy="330" r="82" fill="#ffb4c8"/>
-          <circle cx="210" cy="305" r="62" fill="#ffd1dc"/>
-        </g>
+                <!-- blossom canopy -->
+                <g opacity="0.92">
+                    <circle cx="260" cy="250" r="70" fill="#ffd1dc" />
+                    <circle cx="320" cy="230" r="78" fill="#ffc1d2" />
+                    <circle cx="395" cy="255" r="70" fill="#ffd1dc" />
+                    <circle cx="420" cy="310" r="68" fill="#ffb4c8" />
+                    <circle cx="350" cy="315" r="92" fill="#ffd1dc" />
+                    <circle cx="265" cy="330" r="82" fill="#ffb4c8" />
+                    <circle cx="210" cy="305" r="62" fill="#ffd1dc" />
+                </g>
 
-        <!-- small blossoms -->
-        <g opacity="0.75">
-          <circle cx="300" cy="200" r="12" fill="#fff1f2"/>
-          <circle cx="430" cy="260" r="10" fill="#fff1f2"/>
-          <circle cx="230" cy="280" r="11" fill="#fff1f2"/>
-          <circle cx="395" cy="330" r="9" fill="#fff1f2"/>
-          <circle cx="280" cy="360" r="10" fill="#fff1f2"/>
-          <circle cx="205" cy="330" r="9" fill="#fff1f2"/>
-        </g>
-      </g>
-    </svg>
-  </div>
-
-  <div id="sakura" aria-hidden="true"></div>
-
-  <div class="page">
-    <header class="page-header">
-      <h1>กระดาษโน้ตปัจฉิม 🕊️</h1>
-      <p>ฝากคำอวยพรและความทรงจำ ในวันจากลาที่อบอุ่นเหมือนซากุระบาน</p>
-    </header>
-
-    <div class="controls">
-      <button onclick="openForm()">✍️ เขียนข้อความ</button>
+                <!-- small blossoms -->
+                <g opacity="0.75">
+                    <circle cx="300" cy="200" r="12" fill="#fff1f2" />
+                    <circle cx="430" cy="260" r="10" fill="#fff1f2" />
+                    <circle cx="230" cy="280" r="11" fill="#fff1f2" />
+                    <circle cx="395" cy="330" r="9" fill="#fff1f2" />
+                    <circle cx="280" cy="360" r="10" fill="#fff1f2" />
+                    <circle cx="205" cy="330" r="9" fill="#fff1f2" />
+                </g>
+            </g>
+        </svg>
     </div>
 
-    <div id="board"></div>
-  </div>
+    <div id="sakura" aria-hidden="true"></div>
 
-  <!-- Popup -->
-  <div id="popup">
-    <div class="popup-box">
-      <h3>✍️ เขียนข้อความ</h3>
-      <input id="name" placeholder="ชื่อ (ใส่ด้วยอยากอ่าน)">
-      <textarea id="message" rows="5" maxlength="800" placeholder="ข้อความถึงเรา (สูงสุด 800 ตัวอักษร)"></textarea>
-      <div class="form-hint" id="msgHint">พิมพ์ยาวได้ และเลื่อนได้ในช่องนี้</div>
-      <input id="youtube" placeholder="ลิงก์เพลง YouTube (ไม่ใส่ก็ได้)">
-      <div class="emoji-pick">
-        <div class="emoji-title">เลือกสติกเกอร์</div>
-        <div class="emoji-row" id="emojiRow">
-          <button type="button" class="emoji-btn" data-emoji="🌸" onclick="setEmoji('🌸')">🌸</button>
-          <button type="button" class="emoji-btn" data-emoji="🎓" onclick="setEmoji('🎓')">🎓</button>
-          <button type="button" class="emoji-btn" data-emoji="💐" onclick="setEmoji('💐')">💐</button>
-          <button type="button" class="emoji-btn" data-emoji="🎀" onclick="setEmoji('🎀')">🎀</button>
-          <button type="button" class="emoji-btn" data-emoji="🍡" onclick="setEmoji('🍡')">🍡</button>
-          <button type="button" class="emoji-btn" data-emoji="🕊️" onclick="setEmoji('🕊️')">🕊️</button>
-          <button type="button" class="emoji-btn" data-emoji="✨" onclick="setEmoji('✨')">✨</button>
-          <button type="button" class="emoji-btn" data-emoji="⭐" onclick="setEmoji('⭐')">⭐</button>
-          <button type="button" class="emoji-btn" data-emoji="🫶" onclick="setEmoji('🫶')">🫶</button>
-          <button type="button" class="emoji-btn" data-emoji="❤️" onclick="setEmoji('❤️')">❤️</button>
-          <button type="button" class="emoji-btn" data-emoji="🐾" onclick="setEmoji('🐾')">🐾</button>
-          <button type="button" class="emoji-btn" data-emoji="📌" onclick="setEmoji('📌')">📌</button>
+    <div class="page">
+        <header class="page-header">
+            <h1>กระดาษโน้ตปัจฉิม 🕊️</h1>
+            <p>ฝากคำอวยพรและความทรงจำ ในวันจากลาที่อบอุ่นเหมือนซากุระบาน</p>
+        </header>
+
+        <div class="controls">
+            <button onclick="openForm()">✍️ เขียนข้อความ</button>
         </div>
-      </div>
-      <div class="color-pick">
-        <div class="color-title">เลือกสีโน้ต</div>
-        <div class="color-row" id="colorRow">
-          <button type="button" class="color-btn" data-color="#bfdbfe" style="--c:#bfdbfe" onclick="setColor('#bfdbfe')" aria-label="ฟ้าพาสเทล"></button>
-          <button type="button" class="color-btn" data-color="#fecaca" style="--c:#fecaca" onclick="setColor('#fecaca')" aria-label="แดงพาสเทล"></button>
-          <button type="button" class="color-btn" data-color="#bae6fd" style="--c:#bae6fd" onclick="setColor('#bae6fd')" aria-label="ฟ้าอ่อน"></button>
-          <button type="button" class="color-btn" data-color="#fda4af" style="--c:#fda4af" onclick="setColor('#fda4af')" aria-label="ชมพูซากุระ"></button>
-          <button type="button" class="color-btn" data-color="#c7d2fe" style="--c:#c7d2fe" onclick="setColor('#c7d2fe')" aria-label="ม่วงลาเวนเดอร์"></button>
-          <button type="button" class="color-btn" data-color="#fee2e2" style="--c:#fee2e2" onclick="setColor('#fee2e2')" aria-label="ครีมชมพู"></button>
-          <button type="button" class="color-btn" data-color="#bbf7d0" style="--c:#bbf7d0" onclick="setColor('#bbf7d0')" aria-label="เขียวมิ้นต์"></button>
-          <button type="button" class="color-btn" data-color="#fde68a" style="--c:#fde68a" onclick="setColor('#fde68a')" aria-label="เหลืองพาสเทล"></button>
-          <button type="button" class="color-btn" data-color="#ddd6fe" style="--c:#ddd6fe" onclick="setColor('#ddd6fe')" aria-label="ม่วงอ่อนมาก"></button>
-          <button type="button" class="color-btn" data-color="#fed7aa" style="--c:#fed7aa" onclick="setColor('#fed7aa')" aria-label="พีชพาสเทล"></button>
-        </div>
-      </div>
-      <button id="submitBtn" onclick="submitNote()">ส่งข้อความ</button>
-      <button onclick="closeForm()" class="cancel">ยกเลิก</button>
+
+        <div id="board"></div>
     </div>
-  </div>
 
-  <script src="script.js"></script>
+    <!-- Popup -->
+    <div id="popup">
+        <div class="popup-box">
+            <h3>✍️ เขียนข้อความ</h3>
+            <input id="name" placeholder="ชื่อ (ใส่ด้วยอยากอ่าน)">
+            <textarea id="message" rows="5" maxlength="800"
+                placeholder="ข้อความถึงเรา (สูงสุด 800 ตัวอักษร)"></textarea>
+            <div class="form-hint" id="msgHint">พิมพ์ยาวได้ และเลื่อนได้ในช่องนี้</div>
+            <input id="youtube" placeholder="ลิงก์เพลง YouTube (ไม่ใส่ก็ได้)">
+            <div class="emoji-pick">
+                <div class="emoji-title">เลือกสติกเกอร์</div>
+                <div class="emoji-row" id="emojiRow">
+                    <button type="button" class="emoji-btn" data-emoji="🌸" onclick="setEmoji('🌸')">🌸</button>
+                    <button type="button" class="emoji-btn" data-emoji="🎓" onclick="setEmoji('🎓')">🎓</button>
+                    <button type="button" class="emoji-btn" data-emoji="💐" onclick="setEmoji('💐')">💐</button>
+                    <button type="button" class="emoji-btn" data-emoji="🎀" onclick="setEmoji('🎀')">🎀</button>
+                    <button type="button" class="emoji-btn" data-emoji="🍡" onclick="setEmoji('🍡')">🍡</button>
+                    <button type="button" class="emoji-btn" data-emoji="🕊️" onclick="setEmoji('🕊️')">🕊️</button>
+                    <button type="button" class="emoji-btn" data-emoji="✨" onclick="setEmoji('✨')">✨</button>
+                    <button type="button" class="emoji-btn" data-emoji="⭐" onclick="setEmoji('⭐')">⭐</button>
+                    <button type="button" class="emoji-btn" data-emoji="🫶" onclick="setEmoji('🫶')">🫶</button>
+                    <button type="button" class="emoji-btn" data-emoji="❤️" onclick="setEmoji('❤️')">❤️</button>
+                    <button type="button" class="emoji-btn" data-emoji="🐾" onclick="setEmoji('🐾')">🐾</button>
+                    <button type="button" class="emoji-btn" data-emoji="📌" onclick="setEmoji('📌')">📌</button>
+                </div>
+            </div>
+            <div class="color-pick">
+                <div class="color-title">เลือกสีโน้ต</div>
+                <div class="color-row" id="colorRow">
+                    <button type="button" class="color-btn" data-color="#bfdbfe" style="--c:#bfdbfe"
+                        onclick="setColor('#bfdbfe')" aria-label="ฟ้าพาสเทล"></button>
+                    <button type="button" class="color-btn" data-color="#fecaca" style="--c:#fecaca"
+                        onclick="setColor('#fecaca')" aria-label="แดงพาสเทล"></button>
+                    <button type="button" class="color-btn" data-color="#bae6fd" style="--c:#bae6fd"
+                        onclick="setColor('#bae6fd')" aria-label="ฟ้าอ่อน"></button>
+                    <button type="button" class="color-btn" data-color="#fda4af" style="--c:#fda4af"
+                        onclick="setColor('#fda4af')" aria-label="ชมพูซากุระ"></button>
+                    <button type="button" class="color-btn" data-color="#c7d2fe" style="--c:#c7d2fe"
+                        onclick="setColor('#c7d2fe')" aria-label="ม่วงลาเวนเดอร์"></button>
+                    <button type="button" class="color-btn" data-color="#fee2e2" style="--c:#fee2e2"
+                        onclick="setColor('#fee2e2')" aria-label="ครีมชมพู"></button>
+                    <button type="button" class="color-btn" data-color="#bbf7d0" style="--c:#bbf7d0"
+                        onclick="setColor('#bbf7d0')" aria-label="เขียวมิ้นต์"></button>
+                    <button type="button" class="color-btn" data-color="#fde68a" style="--c:#fde68a"
+                        onclick="setColor('#fde68a')" aria-label="เหลืองพาสเทล"></button>
+                    <button type="button" class="color-btn" data-color="#ddd6fe" style="--c:#ddd6fe"
+                        onclick="setColor('#ddd6fe')" aria-label="ม่วงอ่อนมาก"></button>
+                    <button type="button" class="color-btn" data-color="#fed7aa" style="--c:#fed7aa"
+                        onclick="setColor('#fed7aa')" aria-label="พีชพาสเทล"></button>
+                </div>
+            </div>
+            <button id="submitBtn" onclick="submitNote()">ส่งข้อความ</button>
+            <button onclick="closeForm()" class="cancel">ยกเลิก</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
 </body>
+
 </html>
